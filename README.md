@@ -3,6 +3,7 @@ This is a trajos horse I developed in C++ using SFML. I will add a video transfe
 I strongly advise you to not use it for nonequal purposes
 
 If you compile with g++ use the command :
+    
     To launch the server :
           $  g++ server.cpp -c && g++ server.o -o -lsfml-network && ./server
 
