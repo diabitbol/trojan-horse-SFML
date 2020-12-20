@@ -4,18 +4,9 @@ I strongly advise you to not use it for nonequal purposes
 
 If you compile with g++ use the command :
 To launch the server :
-$  g++ server.cpp -c 
-$  g++ server.o -o -lsfml-network
-$  ./server
-or : 
 $  g++ server.cpp -c && g++ server.o -o -lsfml-network && ./server
 
-
 to compile the client : 
-$  g++ client.cpp -c 
-$  g++ client.o -o -lsfml-network
-$  ./client
-or:
 $  g++ client.cpp -c && g++ client.o -o -lsfml-network && ./client
 
 Send the file obtained to your target.
