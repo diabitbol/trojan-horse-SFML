@@ -1,63 +1,20 @@
 #include <iostream>
-#include <string>
 #include <SFML/Network.hpp>
-// #include "opencv2/core.hpp"
-// #include "opencv2/highgui.hpp"
-// #include <ostringstream>
-// #include <istringstream>
-using namespace std;
 using namespace sf;
-// using namespace cv;
+using namespace std;
 
 int main()
 {
-    Packet packet;
-    TcpSocket socket, recevoir;
-    TcpListener listener;
-    socket.connect("127.0.0.1", 10002);
-    listener.listen(10001);
-    // VideoCapture cap;
-    // Mat img;
-    string a;
-    while (true)
-    {
-        if (listener.accept(recevoir) == Socket::Done)
-        {
-            // ostringstream b;
-            size_t received = 0;
-            recevoir.receive(packet);
-            packet >> a;
-            if (a=="stop")break;
-            // if (a=="cam")
-            // {
-            //     for(; ;)
-            //     {
-            //         cap.open(0);
-            //         if (!cap.opened())
-            //         {
-            //             packet << false;
-            //         }
-            //         else
-            //         {
-            //             cap >> img;
-            //             b << img;
-            //             packet << b.str();    
-            //         }
-            //         socket.send(packet);
-            //     }
-            //     cap.release();
-            else
-            {    
-                a += " >> ~/Documents/retour";
-                cout << a << endl;
-                system(a.c_str());
-                
-            }
-            packet.clear();            
-        }
-    }
-    listener.close();
-    recevoir.disconnect();
-    socket.disconnect();
-    return 0;
+        // Create a socket and connect it to 192.168.1.50 on port 55001
+    sf::TcpSocket socket;
+    socket.connect("192.168.1.50", 55001);
+    // Send a message to the connected host
+    std::string message = "Hi, I am a client";
+    socket.send(message.c_str(), message.size() + 1);
+    // Receive an answer from the server
+    char buffer[1024];
+    std::size_t received = 0;
+    socket.receive(buffer, sizeof(buffer), received);
+    std::cout << "The server said: " << buffer << std::endl;
+
 }

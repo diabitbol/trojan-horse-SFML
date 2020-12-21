@@ -1,56 +1,23 @@
 #include <iostream>
 #include <SFML/Network.hpp>
-#include <vector>
-// #include "opencv2/core.hpp"
-// #include "opencv2/highgui.hpp"
 using namespace std;
 using namespace sf;
-// using namespace cv;
 
 int main()
 {
-    vector<IpAddress> ip;
-    TcpListener listener;
-    Packet packet;
-    TcpSocket socket, recevoir;
-    string str; 
-    // Mat img;
-    listener.listen(10002);
-    if (listener.accept(recevoir) == Socket::Done)
-    {  
-        cout << "new client connected : "<< recevoir.getRemoteAddress() << "local : " << socket.getLocalPort() << " remote : " << socket.getRemoteAddress() << endl;
-        ip.push_back(recevoir.getRemoteAddress());
-        string a;
-        char c;
-        while (true)
-        {
-            cout << "entrez une commande : ";
-            while (cin.get(c))
-            {
-                if (c != '\n')a+=c;
-                else break;
-            }
-            packet << a;
-            socket.connect(recevoir.getRemoteAddress(), 10001);
-            socket.send(packet);
-            if (a=="stop")break;
-            // if (a == "cam")
-            // {
-            //     for (;;)
-            //     {
-            //         recevoir.receive(packet);
-            //         packet >> str;
-            //         str >> img;
-            //         imshow("webcam", img);
-            //     }
-            // }
-            else
-            {
-                packet.clear();
-                a.clear();
-            }
-        }
-    }
-    socket.disconnect();
-    return 0;
+    // Create a listener to wait for incoming connections on port 55001
+    sf::TcpListener listener;
+    listener.listen(55001);
+    // Wait for a connection
+    sf::TcpSocket socket;
+    listener.accept(socket);
+    std::cout << "New client connected: " << socket.getRemoteAddress() << std::endl;
+    // Receive a message from the client
+    char buffer[1024];
+    std::size_t received = 0;
+    socket.receive(buffer, sizeof(buffer), received);
+    std::cout << "The client said: " << buffer << std::endl;
+    // Send an answer
+    std::string message = "Welcome, client";
+    socket.send(message.c_str(), message.size() + 1);
 }
