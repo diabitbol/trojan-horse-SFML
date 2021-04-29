@@ -1,6 +1,6 @@
 # trojan-horse
 trajos horse I developed twice : one in C++ using SFML and one with a clent in python and the server with node.JS. I may add a video transfer from webcam feature with openCV.
-I strongly advise you to not use it for nonequal purposes
+I strongly advise you to not use it for illegal purposes
 
 if you want to use the one in C++ :
     If you compile with g++ : 
